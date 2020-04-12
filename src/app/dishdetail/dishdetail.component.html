@@ -48,11 +48,11 @@
               <p>-- {{comment.author}} {{comment.date | date}}</p>
           </mat-grid-list>
           <mat-grid-list cols="1" rowHeight="200px" *ngIf="commentForm.valid">
-              <p>{{comment.comment}}</p>
-              <p>{{comment.rating}} Stars</p>
-              <p>-- {{comment.author}}</p>
+              <p>{{commentForm.value.comment}}</p>
+              <p>{{commentForm.value.rating}} Stars</p>
+              <p>-- {{commentForm.value.author}}</p>
           </mat-grid-list>
-          <form novalidate [formGroup]="commentForm" #fform="ngForm" (ngSubmit)="onSubmit()">
+          <form novalidate [formGroup]="commentForm" #cform="ngForm" (ngSubmit)="onSubmit()">
               <p>
                 <mat-form-field class="full-width">
                   <input matInput formControlName="author" placeholder="Name" type="text" required>
@@ -64,7 +64,7 @@
                 </p>
               <p>
                 <mat-form-field class="full-width">
-                  <textarea matInput formControlName="comment" placeholder="Your Comment" rows=12 required></textarea>
+                  <textarea matInput formControlName="comment" placeholder="Your Comment" rows=10 required></textarea>
                   <mat-error *ngIf="formErrors.comment">{{formErrors.comment}}</mat-error>
                 </mat-form-field>
               </p>
