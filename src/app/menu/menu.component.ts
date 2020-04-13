@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut, expand } from '../animations/app.animation';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +12,8 @@ import { flyInOut } from '../animations/app.animation';
     'style': 'display: block;'
     },
     animations: [
-      flyInOut()
+      flyInOut(),
+      expand()
     ]
 })
 export class MenuComponent implements OnInit {
@@ -22,7 +23,7 @@ export class MenuComponent implements OnInit {
   errMess: string;
   
   constructor(private DishService: DishService,
-    @Inject('BaseURL') private BaseURL) { }
+    @Inject('baseURL') private baseURL) { }
 
   ngOnInit() {
     this.DishService.getDishes()
